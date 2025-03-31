@@ -15,23 +15,98 @@ METRICS_LOG_DIR = "gpu_metrics_logs"
 # Create the logs directory
 os.makedirs(METRICS_LOG_DIR, exist_ok=True)
 
+def get_memory_bandwidth():
+    """Get GPU memory bandwidth using nvidia-smi nvlink."""
+    try:
+        result = subprocess.run(
+            ['nvidia-smi', '--query-gpu=pcie.link.gen.max,pcie.link.width.max',
+             '--format=csv,noheader,nounits'],
+            stdout=subprocess.PIPE, text=True
+        )
+        
+        # Parse output
+        values = result.stdout.strip().split(', ')
+        if len(values) == 2:
+            link_gen = int(values[0])  # PCIe Gen
+            link_width = int(values[1])  # Number of PCIe lanes
+            
+            # PCIe Gen max bandwidth per lane (GB/s)
+            pcie_bandwidth_table = {
+                1: 0.25,  # PCIe Gen 1: 250 MB/s per lane
+                2: 0.5,   # PCIe Gen 2: 500 MB/s per lane
+                3: 0.985, # PCIe Gen 3: ~985 MB/s per lane
+                4: 1.969, # PCIe Gen 4: ~1969 MB/s per lane
+                5: 3.938  # PCIe Gen 5: ~3938 MB/s per lane
+            }
+            
+            # Estimate memory bandwidth
+            mem_bandwidth = link_width * pcie_bandwidth_table.get(link_gen, 0)
+            return mem_bandwidth * 1000  # Convert to MB/s
+        return 0.0
+    except Exception as e:
+        print(f"Error getting memory bandwidth: {e}")
+        return 0.0
+
+def get_num_cores():
+    """Get the number of cores per SM dynamically based on GPU type."""
+    try:
+        result = subprocess.run(
+            ['nvidia-smi', '--query-gpu=name', '--format=csv,noheader'],
+            stdout=subprocess.PIPE, text=True
+        )
+
+        gpu_name = result.stdout.strip()
+
+        # Define known GPUs and their cores per SM
+        core_mapping = {
+            "Tesla T4": 1280,
+            "A100-SXM4-40GB": 6912,
+            "V100-SXM2-16GB": 5120,
+            "L4": 7680
+        }
+
+        return core_mapping.get(gpu_name, 1280)  # Default to T4 if unknown
+    except Exception as e:
+        print(f"Error detecting GPU name: {e}")
+        return 1280
+
+def estimate_flops(gpu_utilization, gpu_clock_mhz, num_cores, ops_per_cycle=2):
+    """Estimate FLOPS using basic approximation formula."""
+    return gpu_utilization / 100 * gpu_clock_mhz * 1e6 * num_cores * ops_per_cycle
 
 def get_gpu_metrics():
-    """Collect GPU metrics using nvidia-smi."""
-    try:
-        output = subprocess.check_output(GPU_METRICS_CMD, shell=True).decode("utf-8").strip()
-        if output:
-            metrics = output.split(", ")
-            gpu_util, mem_util, mem_used, mem_total = map(float, metrics)
-            return {
-                "gpu_utilization": gpu_util,
-                "memory_utilization": mem_util,
-                "memory_used_mb": mem_used,
-                "memory_total_mb": mem_total,
-            }
-    except subprocess.CalledProcessError:
-        return None
+    """Collect GPU metrics including utilization, memory, bandwidth, and FLOPS."""
+    result = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu,memory.used,memory.total,clocks.sm',
+                             '--format=csv,noheader,nounits'],
+                            stdout=subprocess.PIPE, text=True)
+    
+    # Split result by commas and parse
+    values = result.stdout.strip().split(', ')
+    if len(values) == 4:
+        gpu_utilization = float(values[0])
+        memory_used = float(values[1])
+        memory_total = float(values[2])
+        gpu_clock_mhz = float(values[3])
 
+        # Get memory bandwidth
+        mem_bandwidth = get_memory_bandwidth()
+
+        # Estimate FLOPS (if needed)
+        num_cores = get_num_cores()  # Example for NVIDIA T4, adjust based on GPU type
+        flops_utilization = estimate_flops(gpu_utilization, gpu_clock_mhz, num_cores)
+
+        # Return all metrics
+        return {
+            "gpu_utilization": gpu_utilization,
+            "memory_utilization": round((memory_used / memory_total) * 100, 2) if memory_total > 0 else 0,
+            "memory_used_mb": memory_used,
+            "memory_total_mb": memory_total,
+            "memory_bandwidth_mb_s": mem_bandwidth,
+            "flops_utilization_tflops": flops_utilization / 1e12  # Convert to TFLOPS
+        }
+    else:
+        return {"gpu_utilization": 0.0, "memory_utilization": 0.0, "memory_used_mb": 0.0,
+                "memory_total_mb": 0.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
 
 def log_metrics(log_file, metrics):
     """Write GPU metrics to the log file."""
@@ -54,7 +129,7 @@ def run_model(model_name, data_path, epochs=90, batch_size=256, patience=5, gpu_
 
     # Define training command
     cmd = [
-        "python", "main.py",
+        "python", "/home/jyl2196/examples/imagenet/main.py",
         "-a", model_name,  # Model architecture
         data_path,
         "--epochs", str(epochs),
