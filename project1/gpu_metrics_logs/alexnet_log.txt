@@ -1,0 +1,12 @@
+/home/jyl2196/examples/imagenet/main.py:110: UserWarning: nccl backend >=2.5 requires GPU count>1, see https://github.com/NVIDIA/nccl/issues/103 perhaps use 'gloo'
+  warnings.warn("nccl backend >=2.5 requires GPU count>1, see https://github.com/NVIDIA/nccl/issues/103 perhaps use 'gloo'")
+=> creating model 'alexnet'
+Epoch: [0][  1/391]	Time  2.301 ( 2.301)	Data  0.931 ( 0.931)	Loss 6.9062e+00 (6.9062e+00)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Epoch: [0][ 11/391]	Time  0.108 ( 0.302)	Data  0.028 ( 0.088)	Loss 6.8666e+00 (6.8943e+00)	Acc@1   0.00 (  0.25)	Acc@5   2.34 (  1.70)
+Epoch: [0][ 21/391]	Time  0.128 ( 0.235)	Data  0.080 ( 0.087)	Loss 6.7316e+00 (6.8128e+00)	Acc@1   0.00 (  0.43)	Acc@5   1.95 (  2.10)
+Epoch: [0][ 31/391]	Time  0.106 ( 0.208)	Data  0.034 ( 0.085)	Loss 6.2245e+00 (6.7062e+00)	Acc@1   0.39 (  0.47)	Acc@5   2.73 (  2.29)
+Epoch: [0][ 41/391]	Time  0.347 ( 0.200)	Data  0.300 ( 0.089)	Loss 6.2016e+00 (6.6666e+00)	Acc@1   0.39 (  0.45)	Acc@5   3.52 (  2.48)
+Epoch: [0][ 51/391]	Time  0.191 ( 0.191)	Data  0.145 ( 0.087)	Loss nan (nan)	Acc@1   0.39 (  0.42)	Acc@5   3.12 (  2.41)
+Epoch: [0][ 61/391]	Time  0.224 ( 0.185)	Data  0.178 ( 0.088)	Loss nan (nan)	Acc@1   0.78 (  0.40)	Acc@5   1.95 (  2.38)
+Epoch: [0][ 71/391]	Time  0.271 ( 0.181)	Data  0.224 ( 0.087)	Loss nan (nan)	Acc@1   0.78 (  0.41)	Acc@5   3.91 (  2.39)
+Epoch: [0][ 81/391]	Time  0.299 ( 0.177)	Data  0.253 ( 0.086)	Loss nan (nan)	Acc@1   0.78 (  0.42)	Acc@5   4.69 (  2.42)

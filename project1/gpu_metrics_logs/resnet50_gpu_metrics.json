@@ -1,0 +1,58 @@
+{"gpu_utilization": 0.0, "memory_utilization": 0.0, "memory_used_mb": 1.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 0.0, "memory_utilization": 0.0, "memory_used_mb": 1.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 0.0, "memory_utilization": 0.0, "memory_used_mb": 1.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.0, "memory_used_mb": 4.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.0, "memory_used_mb": 4.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 0.0, "memory_utilization": 0.0, "memory_used_mb": 311.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 100.0, "memory_utilization": 100.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 100.0, "memory_utilization": 100.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 100.0, "memory_utilization": 100.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 100.0, "memory_utilization": 100.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 22.0, "memory_utilization": 23.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 22.0, "memory_utilization": 23.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 22.0, "memory_utilization": 23.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 22.0, "memory_utilization": 23.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 22.0, "memory_utilization": 23.0, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.017365633411478683, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 3.0, "memory_utilization": 0.017365633411478683, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 0.0, "memory_utilization": 1.3501779977424677, "memory_used_mb": 311.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 100.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 4.3008}
+{"gpu_utilization": 39.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 1.9918080000000002}
+{"gpu_utilization": 39.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 2.02176}
+{"gpu_utilization": 39.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 2.02176}
+{"gpu_utilization": 39.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 2.02176}
+{"gpu_utilization": 0.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.017365633411478683, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 3.0, "memory_utilization": 0.017365633411478683, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 0.0, "memory_utilization": 1.3501779977424677, "memory_used_mb": 311.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 100.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 5.0304}
+{"gpu_utilization": 100.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 5.1456}
+{"gpu_utilization": 100.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 5.184}
+{"gpu_utilization": 5.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.2592}
+{"gpu_utilization": 5.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.2592}
+{"gpu_utilization": 5.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.2592}
+{"gpu_utilization": 0.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 0.0, "memory_utilization": 95.4198141877225, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 0.0, "memory_utilization": 1.35, "memory_used_mb": 311.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 0.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 0.0, "memory_utilization": 1.35, "memory_used_mb": 311.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 100.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 4.4544}
+{"gpu_utilization": 100.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 5.1072}
+{"gpu_utilization": 100.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 5.184}
+{"gpu_utilization": 9.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.46656}
+{"gpu_utilization": 9.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.46656}
+{"gpu_utilization": 9.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.46656}
+{"gpu_utilization": 0.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 0.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 3.0, "memory_utilization": 0.02, "memory_used_mb": 4.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.15667199999999998}
+{"gpu_utilization": 0.0, "memory_utilization": 1.35, "memory_used_mb": 311.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 100.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 4.8384}
+{"gpu_utilization": 66.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 3.3960960000000004}
+{"gpu_utilization": 66.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 3.42144}
+{"gpu_utilization": 66.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 3.42144}
+{"gpu_utilization": 0.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}
+{"gpu_utilization": 0.0, "memory_utilization": 95.42, "memory_used_mb": 21979.0, "memory_total_mb": 23034.0, "memory_bandwidth_mb_s": 15760.0, "flops_utilization_tflops": 0.0}

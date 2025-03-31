@@ -1,0 +1,9 @@
+/home/jyl2196/examples/imagenet/main.py:110: UserWarning: nccl backend >=2.5 requires GPU count>1, see https://github.com/NVIDIA/nccl/issues/103 perhaps use 'gloo'
+  warnings.warn("nccl backend >=2.5 requires GPU count>1, see https://github.com/NVIDIA/nccl/issues/103 perhaps use 'gloo'")
+=> creating model 'resnet50'
+Epoch: [0][  1/391]	Time  3.573 ( 3.573)	Data  0.939 ( 0.939)	Loss 7.0198e+00 (7.0198e+00)	Acc@1   0.39 (  0.39)	Acc@5   0.78 (  0.78)
+Epoch: [0][ 11/391]	Time  1.305 ( 1.440)	Data  0.000 ( 0.086)	Loss 8.0670e+00 (7.6985e+00)	Acc@1   0.00 (  0.36)	Acc@5   2.34 (  2.13)
+Epoch: [0][ 21/391]	Time  1.309 ( 1.378)	Data  0.000 ( 0.085)	Loss 6.5523e+00 (7.4698e+00)	Acc@1   0.00 (  0.37)	Acc@5   1.17 (  2.25)
+Epoch: [0][ 31/391]	Time  1.306 ( 1.356)	Data  0.000 ( 0.085)	Loss 6.4547e+00 (7.3291e+00)	Acc@1   0.78 (  0.35)	Acc@5   2.34 (  2.14)
+Epoch: [0][ 41/391]	Time  1.305 ( 1.343)	Data  0.000 ( 0.084)	Loss 6.5394e+00 (7.1986e+00)	Acc@1   0.78 (  0.40)	Acc@5   2.73 (  2.22)
+Epoch: [0][ 51/391]	Time  1.304 ( 1.335)	Data  0.000 ( 0.084)	Loss 5.8923e+00 (6.9971e+00)	Acc@1   0.39 (  0.46)	Acc@5   2.73 (  2.29)
