@@ -11,3 +11,6 @@ in the project1 repository, run: python run_training_with_metrics.py --data-path
 I only pasted it here for my personal use (I am working close to the deadline).
 
 training will automatically run for resnet18, resnet50, and alexnet with metrics stores in a new directory, "gpu_metrics_logs."
+
+docker buildx create --name [name] --use
+
