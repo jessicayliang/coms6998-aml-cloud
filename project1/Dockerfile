@@ -28,4 +28,4 @@ COPY graph_gpu_metrics.py /app/
 COPY pytorch-examples/imagenet/main.py /app/pytorch-examples/imagenet/main.py
 
 # Set the default command to run
-CMD ["python3", "project1/run_training_with_metrics.py", "--data-path", "/app/tiny-imagen
+CMD ["python3", "project1/run_training_with_metrics.py", "--data-path", "/app/tiny-imagenet-200/"]
