@@ -186,7 +186,7 @@ def main():
     zone, gpu_type, message = finder.find_gpu_vm()
 
     if zone and gpu_type:
-        print(f"\n✅ SUCCESS: {message}")
+        print(f"\n SUCCESS: {message}")
         print(f"\nTo create a VM with this GPU, use:")
         print(f"gcloud compute instances create my-gpu-instance \\")
         print(f"  --project={args.project} \\")
@@ -198,7 +198,7 @@ def main():
         print(f"  --boot-disk-size=100GB \\")
         print(f"  --maintenance-policy=TERMINATE")
     else:
-        print(f"\n❌ FAILED: {message}")
+        print(f"\n FAILED: {message}")
 
 if __name__ == "__main__":
     main()
