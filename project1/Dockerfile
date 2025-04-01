@@ -6,26 +6,27 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     git \
-    unzip \
     python3 \
-    python3-pip
+    python3-pip \
+    python3-dev \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN git clone --depth 1 --branch main https://github.com/pytorch/examples.git /app/pytorch-examples
-
-COPY tiny-imagenet-200.zip /app/tiny-imagenet-200.zip
-
-RUN unzip /app/tiny-imagenet-200.zip -d /app/
 
 
 # Copy project files to the container
 
 
 COPY requirements.txt /app/
+RUN pip install enum34 --user
+
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
 COPY run_training_with_metrics.py /app/
 COPY graph_gpu_metrics.py /app/
-COPY pytorch-examples/imagenet/main.py /app/pytorch-examples/imagenet/main.py
 
 # Set the default command to run
-CMD ["python3", "project1/run_training_with_metrics.py", "--data-path", "/app/tiny-imagenet-200/"]
+CMD ["python3", "/app/run_training_with_metrics.py", "--data-path", "/data/tiny-imagenet-200/"]

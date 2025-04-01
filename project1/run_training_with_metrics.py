@@ -129,7 +129,7 @@ def run_model(model_name, data_path, epochs=90, batch_size=256, patience=5, gpu_
 
     # Define training command
     cmd = [
-        "python", "/home/jyl2196/examples/imagenet/main.py",
+        "python3", "/app/pytorch-examples/imagenet/main.py",
         "-a", model_name,  # Model architecture
         data_path,
         "--epochs", str(epochs),

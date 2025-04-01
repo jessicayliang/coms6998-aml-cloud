@@ -12,5 +12,8 @@ I only pasted it here for my personal use (I am working close to the deadline).
 
 training will automatically run for resnet18, resnet50, and alexnet with metrics stores in a new directory, "gpu_metrics_logs."
 
-docker buildx create --name [name] --use
+docker run --gpus all -v ~/tiny-imagenet-200:/data/tiny-imagenet-200 --shm-size=8g -it jessicayliang/gpu-training-container
+
+that is just the name i used
+
 
