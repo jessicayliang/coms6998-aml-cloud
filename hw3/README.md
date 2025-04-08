@@ -1,4 +1,4 @@
-# Instructions for Building and Deploying the DL Workflow on GKE
+# Instructions
 
 ## Prerequisites
 - Google Cloud SDK installed and configured
@@ -27,9 +27,8 @@ gcloud container clusters create $CLUSTER_NAME \
 # Configure kubectl to use the new cluster
 gcloud container clusters get-credentials $CLUSTER_NAME --zone $ZONE --project $PROJECT_ID
 ```
-## Step 2: Set Up Container Registry Access
 
-## docker repo in artifact
+## docker repo in artifact (deprecated .io)
 ```bash
 gcloud artifacts repositories create mnist-repo \
   --repository-format=docker \
@@ -46,29 +45,13 @@ gcloud auth configure-docker us-east1-docker.pkg.dev
 
 
 # Build and push the training container
-docker buildx build --platform linux/amd64,linux/arm64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-training:latest -f Dockerfile .
+docker buildx build --platform linux/amd64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-training:latest -f Dockerfile .
 docker push us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-training:latest
 ```
 
 ## Step 4: Build and Push the Inference Container
-docker buildx build --platform linux/amd64,linux/arm64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-inference:latest -f Dockerfile .
+docker buildx build --platform linux/amd64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-inference:latest -f Dockerfile .
 docker push us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-inference:latest
-
-```bash
-# Create directory structure
-cd ..
-mkdir -p inference
-cd inference
-
-# Create the necessary files
-# Copy content from inference-dockerfile to Dockerfile
-# Copy content from serve.py to serve.py
-# Copy content from inference-requirements.txt to requirements.txt
-
-# Build and push the inference container
-docker build -t gcr.io/$PROJECT_ID/mnist-inference:latest .
-docker push gcr.io/$PROJECT_ID/mnist-inference:latest
-```
 
 ## Step 5: Update YAML Files
 
@@ -87,10 +70,6 @@ kubectl apply -f model-pvc.yaml
 ## Step 7: Run the Training Job
 
 ```bash
-# Copy content from training-job.yaml to training-job.yaml
-
-# Update the PROJECT_ID in the YAML file
-sed -i "s/\[YOUR-PROJECT-ID\]/$PROJECT_ID/g" training-job.yaml
 
 # Create the training job
 kubectl apply -f training-job.yaml
@@ -103,12 +82,6 @@ kubectl logs -f job/mnist-training-job
 ## Step 8: Deploy the Inference Service
 
 ```bash
-# Copy content from inference-deployment.yaml to inference-deployment.yaml
-# Copy content from inference-service.yaml to inference-service.yaml
-
-# Update the PROJECT_ID in the YAML files
-sed -i "s/\[YOUR-PROJECT-ID\]/$PROJECT_ID/g" inference-deployment.yaml
-
 # Create the deployment and service
 kubectl apply -f inference-deployment.yaml
 kubectl apply -f inference-service.yaml
