@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 import os
 from flask import Flask, request, jsonify
+from keras.src.datasets.boston_housing import load_data
+from tensorflow.python.keras.models import load_model
 from werkzeug.utils import secure_filename
 from PIL import Image
 import io
@@ -10,6 +12,7 @@ app = Flask(__name__)
 
 # Global variable for model
 model = None
+load_model()
 
 def load_model():
     global model
@@ -93,7 +96,7 @@ def predict_digit():
             'predicted_digit': predicted_label,
             'confidence': confidence
         })
-    except Exception as e:
+    except Exception as` e:
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

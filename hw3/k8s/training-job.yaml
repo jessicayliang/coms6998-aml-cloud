@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - name: mnist-training
-          image: us-central1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training:latest
+          image: us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training:latest
           resources:
             requests:
               memory: "2Gi"

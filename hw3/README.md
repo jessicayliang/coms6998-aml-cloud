@@ -35,8 +35,16 @@ gcloud artifacts repositories create mnist-repo \
   --location=us-east1 \
   --description="Repository for MNIST ML models"
   ```
+
+### list artifact repos
+```bash
+gcloud artifacts repositories list
+```
+
+
 ```bash
 gcloud auth configure-docker us-east1-docker.pkg.dev
+
 
 ```
 ## Step 3: Build and Push the Training Container
@@ -45,17 +53,31 @@ gcloud auth configure-docker us-east1-docker.pkg.dev
 
 
 # Build and push the training container
-docker buildx build --platform linux/amd64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-training:latest -f Dockerfile .
-docker push us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-training:latest
+docker buildx build --platform linux/amd64 \
+  -t us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training:latest \
+  --push \
+  -f Dockerfile .
+
+gcloud artifacts docker images list us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo
+
 ```
 
 ## Step 4: Build and Push the Inference Container
-docker buildx build --platform linux/amd64 -t us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-inference:latest -f Dockerfile .
-docker push us-east1-docker.pkg.dev/coms6698-spring2025/mnist-repo/mnist-inference:latest
+```bash
+docker buildx build --platform linux/amd64 \
+-t us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference:latest \
+--push \
+-f Dockerfile .
 
-## Step 5: Update YAML Files
-
-Update all YAML files by replacing `[YOUR-PROJECT-ID]` with your actual GCP project ID.
+gcloud artifacts docker images list us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo
+```
+### to delete inference images
+```bash
+ gcloud artifacts docker images delete \
+  us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference \
+  --delete-tags \
+  --quiet
+```
 
 ## Step 6: Create the Persistent Volume Claim
 

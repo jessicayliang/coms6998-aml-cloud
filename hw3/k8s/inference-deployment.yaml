@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mnist-inference
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mnist-inference
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mnist-inference
-          image: us-central1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference:latest
+          image: us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference:latest
           ports:
             - containerPort: 5001
           resources:
@@ -33,13 +33,13 @@ spec:
           livenessProbe:
             httpGet:
               path: /status
-              port: 5000
+              port: 5001
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /status
-              port: 5000
+              port: 5001
             initialDelaySeconds: 30
             periodSeconds: 10
       volumes:

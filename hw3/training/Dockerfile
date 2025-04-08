@@ -1,5 +1,5 @@
 # Force amd64 architecture and start from a TensorFlow image
-FROM --platform=linux/amd64 tensorflow/tensorflow:2.9.0
+FROM tensorflow/tensorflow:2.9.0
 
 WORKDIR /app
 ENV TMPDIR=/tmp

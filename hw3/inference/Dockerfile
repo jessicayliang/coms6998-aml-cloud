@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 tensorflow/tensorflow:2.9.0
+FROM tensorflow/tensorflow:2.9.0
 
 WORKDIR /app
 
