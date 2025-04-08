@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mnist-training-job
+spec:
+  ttlSecondsAfterFinished: 86400  # Delete job 24 hours after completion
+  template:
+    spec:
+      containers:
+        - name: mnist-training
+          image: us-central1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training:latest
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+          volumeMounts:
+            - name: model-storage
+              mountPath: /models
+      volumes:
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: model-storage-pvc
+      restartPolicy: Never
+  backoffLimit: 2
