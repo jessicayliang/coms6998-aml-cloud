@@ -1,24 +1,25 @@
-# Instructions
+# how to use run inference service with web interface (mnist)
 
-## Prerequisites
-- Google Cloud SDK installed and configured
+## prereqs
+- Google cloud SDK installed and configured
 - kubectl installed and configured
 - Access to a GCP project with GKE enabled
-my commands:
+
+### my commands for my project
 ```bash
 gcloud auth login
 gcloud config set project coms6998-spring2025
 ```
 
-## Step 1: Create a GKE Cluster
+## Create GKE cluster
 
 ```bash
-# Set environment variables
+# set env variables
 export PROJECT_ID=$(gcloud config get-value project)
 export CLUSTER_NAME=kubeflow-mnist-cluster
 export ZONE=us-east1-b
 
-# Create a GKE cluster
+# create cluster
 gcloud container clusters create $CLUSTER_NAME \
   --zone $ZONE \
   --machine-type n1-standard-4 \
@@ -28,7 +29,8 @@ gcloud container clusters create $CLUSTER_NAME \
 gcloud container clusters get-credentials $CLUSTER_NAME --zone $ZONE --project $PROJECT_ID
 ```
 
-## docker repo in artifact (deprecated .io)
+## docker repo in artifact (since writing to container registry deprecated 03/18/2025)
+https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation
 ```bash
 gcloud artifacts repositories create mnist-repo \
   --repository-format=docker \
@@ -36,42 +38,53 @@ gcloud artifacts repositories create mnist-repo \
   --description="Repository for MNIST ML models"
   ```
 
-### list artifact repos
+### double check and list artifact repos - should see mnist-repo
 ```bash
 gcloud artifacts repositories list
 ```
 
-
+## configure docker
 ```bash
 gcloud auth configure-docker us-east1-docker.pkg.dev
 
-
 ```
-## Step 3: Build and Push the Training Container
 
+## build and push training container to artifact repo for amd64
+remember to go to training directory
 ```bash
-
-
-# Build and push the training container
 docker buildx build --platform linux/amd64 \
   -t us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training:latest \
   --push \
   -f Dockerfile .
-
+```
+### double check and list images
+```bash
 gcloud artifacts docker images list us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo
 
 ```
+#### in case something goes wrong and need to delete images
+```bash
+gcloud artifacts docker images delete \
+  us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-training \
+  --delete-tags \
+  --quiet
+```
 
-## Step 4: Build and Push the Inference Container
+## build and push inference container (same as training)
+remember to go to inference directory
 ```bash
 docker buildx build --platform linux/amd64 \
 -t us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference:latest \
 --push \
 -f Dockerfile .
+```
 
+### double check and list images
+```bash
 gcloud artifacts docker images list us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo
 ```
-### to delete inference images
+
+#### in case you need to delete inference images
 ```bash
  gcloud artifacts docker images delete \
   us-east1-docker.pkg.dev/coms6998-spring2025/mnist-repo/mnist-inference \
@@ -79,58 +92,50 @@ gcloud artifacts docker images list us-east1-docker.pkg.dev/coms6998-spring2025/
   --quiet
 ```
 
-## Step 6: Create the Persistent Volume Claim
+## Create persistent volume claim
+go to k8s directory
 
 ```bash
-cd ..
-# Copy content from model-pvc.yaml to model-pvc.yaml
-
-# Create the PVC
 kubectl apply -f model-pvc.yaml
 ```
 
-## Step 7: Run the Training Job
-
+## run training
 ```bash
-
-# Create the training job
 kubectl apply -f training-job.yaml
+```
 
-# Monitor the training job
+### monitoring jobs
+```bash
 kubectl get jobs
 kubectl logs -f job/mnist-training-job
 ```
 
-## Step 8: Deploy the Inference Service
+## deploy inference services
 
 ```bash
-# Create the deployment and service
+# creating
 kubectl apply -f inference-deployment.yaml
 kubectl apply -f inference-service.yaml
+```
 
-# Monitor the deployment
+### monitoring
+```bash
 kubectl get deployments
 kubectl get pods
 ```
 
-## Step 9: Access the Inference Service
+## access the inferences service
 
 ```bash
-# Get the external IP of the service
+# get external ip
 kubectl get service mnist-inference-service
-
-# Access the web interface using the EXTERNAL-IP
-echo "Visit http://EXTERNAL-IP in your browser"
 ```
 
-## Step 10: Test the Inference Service
+## test inference service
 
-1. Visit the web interface at http://EXTERNAL-IP
-2. Use the file upload form to upload an image of a handwritten digit
-3. Alternatively, use the `/predict/random` endpoint to test with a random MNIST digit
+1. web interface at http://EXTERNAL-IP
 
-## Cleaning Up
-
+## clean up (image deletion commands above)
 ```bash
 # Delete the service and deployment
 kubectl delete -f inference-service.yaml

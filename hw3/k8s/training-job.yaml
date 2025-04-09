@@ -19,6 +19,7 @@ spec:
           volumeMounts:
             - name: model-storage
               mountPath: /models
+          imagePullPolicy: Always
       volumes:
         - name: model-storage
           persistentVolumeClaim:

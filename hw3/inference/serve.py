@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import os
 from flask import Flask, request, jsonify
-from keras.src.datasets.boston_housing import load_data
+# from keras.src.datasets.boston_housing import load_data
 from tensorflow.python.keras.models import load_model
 from werkzeug.utils import secure_filename
 from PIL import Image
@@ -11,15 +11,17 @@ import io
 app = Flask(__name__)
 
 # Global variable for model
-model = None
-load_model()
+
 
 def load_model():
     global model
     model_path = '/models/mnist_model_latest.keras'
     print(f"Loading model from {model_path}")
     model = tf.keras.models.load_model(model_path)
-    print("Model loaded successfully!")
+    print("model loaded")
+
+model = None
+load_model()
 
 @app.route('/')
 def home():
@@ -49,7 +51,7 @@ def predict_random():
     if model is None:
         return jsonify({'error': 'Model not loaded'}), 500
 
-    # Load a small sample from MNIST test set
+    # Load test sample set
     _, (x_test, y_test) = tf.keras.datasets.mnist.load_data()
     x_test = x_test / 255.0
 
@@ -96,7 +98,7 @@ def predict_digit():
             'predicted_digit': predicted_label,
             'confidence': confidence
         })
-    except Exception as` e:
+    except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
