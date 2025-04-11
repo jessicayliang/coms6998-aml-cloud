@@ -35,7 +35,7 @@ https://cloud.google.com/container-registry/docs/deprecations/container-registry
 gcloud artifacts repositories create mnist-repo \
   --repository-format=docker \
   --location=us-east1 \
-  --description="Repository for MNIST ML models"
+  --description="Repository for MNIST"
   ```
 
 ### double check and list artifact repos - should see mnist-repo

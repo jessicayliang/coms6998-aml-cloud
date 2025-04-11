@@ -2,7 +2,6 @@ FROM tensorflow/tensorflow:2.9.0
 
 WORKDIR /app
 
-# Install inference dependencies only (TF already in base image)
 RUN pip install --upgrade pip && \
     pip install flask pillow werkzeug gunicorn
 
